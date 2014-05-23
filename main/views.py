@@ -73,6 +73,8 @@ def standard_algorithm(request, algo_id, language_code=None):
 
 
 def create_algorithm_with_language(request, language_id):
+    if request.method != "POST":
+        raise Http404
     language = get_object_or_404(LanguageModel, pk=language_id)
     algorithm = AlgorithmModel()
     algorithm.key = get_user_key(request)
@@ -83,6 +85,8 @@ def create_algorithm_with_language(request, language_id):
 
 
 def create_algorithm(request):
+    if request.method != "POST":
+        raise Http404
     languages = LanguageModel.objects.order_by('-index', 'name').all()
     return render_to_response('create_algorithm.html', {
         'languages': languages,
@@ -90,6 +94,8 @@ def create_algorithm(request):
 
 
 def implement_algorithm_with_language(request, algo_id, language_id):
+    if request.method != "POST":
+        raise Http404
     language = get_object_or_404(LanguageModel, pk=language_id)
     algorithm = get_object_or_404(AlgorithmModel, pk=algo_id)
     if not get_can_save(request, algorithm):
@@ -115,6 +121,8 @@ def implement_algorithm_with_language(request, algo_id, language_id):
 
 
 def implement_algorithm(request, algo_id):
+    if request.method != "POST":
+        raise Http404
     languages = LanguageModel.objects.order_by('-index', 'name').all()
     return render_to_response('implement_algorithm.html', {
         'languages': languages,
