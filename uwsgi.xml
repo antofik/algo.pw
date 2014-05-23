@@ -1,0 +1,17 @@
+<!-- UWSGI XML Configuration File -->
+<uwsgi>
+    <socket>/server/www/algo.pw/uwsgi.sock</socket>
+    <plugins>python</plugins>
+	<chdir>/server/www/algo.pw</chdir>
+	<pythonpath>.</pythonpath>
+    <module>wsgi</module>
+	<processes>50</processes>
+	<threads>2</threads>
+    <max-requests>5000</max-requests>
+    <buffer-size>32768</buffer-size>
+    <harakiri>300000000</harakiri>
+	<reload-mercy>8</reload-mercy>
+    <master />
+    <no-orphans />
+
+</uwsgi>
