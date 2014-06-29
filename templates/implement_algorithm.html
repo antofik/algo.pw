@@ -65,8 +65,9 @@
         {% endfor %}
         <script>
             $(function(){
-               $('.language-button').click(function(){
-                   document.location = '/implement/{{ algo_id }}/' + $(this).data('id')
+               $('.language-button').click(function(e){
+                   e.preventDefault();
+                   $('<form action="/implement/'+$(this).data("id")+'/" method="POST"></form>').submit();
                });
             });
         </script>
