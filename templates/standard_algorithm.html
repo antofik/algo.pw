@@ -130,7 +130,7 @@
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
                     {% for item in not_implemented %}
-                        <li><a tabindex="-1" href="/implement/{{ algorithm.id }}/{{ item.id }}">{{ item.name }}</a></li>
+                        <li><a tabindex="-1" href="#" class="create-implementation" data-href="/implement/{{ algorithm.id }}/{{ item.id }}">{{ item.name }}</a></li>
                     {% endfor %}
                     {% if more_not_implemented %}
                         {% if not_implemented %}<li class="divider"></li>{% endif %}
@@ -308,6 +308,11 @@
                     {% for tag in all_tags %}'{{ tag }}',{% endfor %}
                 ]
             });
+            $(".create-implementation").click(function(e){
+                e.preventDefault();
+                $('<form action="'+$(this).data("href")+'" method="POST"></form>').submit();
+            });
+
             cmdSave.hide();
             window.edited = false;
         }

@@ -71,7 +71,7 @@ def standard_algorithm(request, algo_id, language_code=None):
     response.set_cookie('key', get_user_key(request))
     return response
 
-
+@csrf_exempt
 def create_algorithm_with_language(request, language_id):
     if request.method != "POST":
         raise Http404
@@ -83,7 +83,7 @@ def create_algorithm_with_language(request, language_id):
     implementation.save()
     return redirect('/fork/%s' % algorithm.id)
 
-
+@csrf_exempt
 def create_algorithm(request):
     if request.method != "POST":
         raise Http404
@@ -92,7 +92,7 @@ def create_algorithm(request):
         'languages': languages,
     }, context_instance=RequestContext(request))
 
-
+@csrf_exempt
 def implement_algorithm_with_language(request, algo_id, language_id):
     if request.method != "POST":
         raise Http404
@@ -119,10 +119,8 @@ def implement_algorithm_with_language(request, algo_id, language_id):
     implementation.save()
     return redirect('/fork/%s/%s' % (algorithm.id, language.slug))
 
-
+@csrf_exempt
 def implement_algorithm(request, algo_id):
-    if request.method != "POST":
-        raise Http404
     languages = LanguageModel.objects.order_by('-index', 'name').all()
     return render_to_response('implement_algorithm.html', {
         'languages': languages,

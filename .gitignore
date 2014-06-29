@@ -58,3 +58,4 @@ docs/_build/
 localsettings.py
 
 logs
+.idea
