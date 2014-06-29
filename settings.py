@@ -3,13 +3,18 @@ import os
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Anton', 'antofik@gmail.com'),
 )
 MANAGERS = ADMINS
+
+ALLOWED_HOSTS = [
+	'.algo.pw',
+	'.algo.pw.',
+]
 
 SITE_ID = 1
 SECRET_KEY = '_^#r&amp;lde=n#r&xmp;%44tr*zy&amp;z^@u=1*$6^2-fergmisw5t&amp;wgzn^'
@@ -162,25 +167,32 @@ LOGGING = {
 }
 
 # Debug toolbar
-if DEBUG and False:
-     INTERNAL_IPS = ( '127.0.0.1',)
+if DEBUG:
+     INTERNAL_IPS = ( '127.0.0.1','192.168.56.107','10.0.2.15',)
      MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
      INSTALLED_APPS += ('debug_toolbar',)
-     DEBUG_TOOLBAR_PANELS = (
-         'debug_toolbar.panels.version.VersionDebugPanel', 
-         'debug_toolbar.panels.timer.TimerDebugPanel',
-         'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-         'debug_toolbar.panels.headers.HeaderDebugPanel',
-         'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-         'debug_toolbar.panels.template.TemplateDebugPanel',
-         'debug_toolbar.panels.sql.SQLDebugPanel',
-         'debug_toolbar.panels.cache.CacheDebugPanel',
-         'debug_toolbar.panels.logger.LoggingPanel',
-     )
-     DEBUG_TOOLBAR_CONFIG = {
+     
+
+
+DEBUG_TOOLBAR_CONFIG = {
          'EXCLUDE_URLS': ('/admin',), 
-         'INTERCEPT_REDIRECTS': False,
+#         'INTERCEPT_REDIRECTS': False,
      }
+
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
 
 try:
     from localsettings import *
