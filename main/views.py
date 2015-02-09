@@ -85,8 +85,6 @@ def create_algorithm_with_language(request, language_id):
 
 @csrf_exempt
 def create_algorithm(request):
-    if request.method != "POST":
-        raise Http404
     languages = LanguageModel.objects.order_by('-index', 'name').all()
     return render_to_response('create_algorithm.html', {
         'languages': languages,

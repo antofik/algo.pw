@@ -8,11 +8,21 @@
         </button>
         <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
             {% for item in popular_languages %}
-                <li><a tabindex="-1" href="/create/{{ item.id }}">{{ item.name }}</a></li>
+                <li><a tabindex="-1" class='create-link'  href="javascript:void(0)" data-id='{{ item.id }}'>{{ item.name }}</a></li>
             {% endfor %}
             {% if popular_languages %}<li class="divider"></li>{% endif %}
-            <li><a tabindex="-1" href="/create">More...</a></li>
+            <li><a tabindex="-1" href="/create">More...</a></li>			
         </ul>
+		<form id="create-form" style='display:none'>
+			<input name="id" value=0 />			
+		</form>
+		<script>
+			$("a.create-link").click(function(){				
+				var form = $("#create-form");
+				$("[name=id]", form).value($(this).data("id"));
+				form.submit();
+			});
+		</script>
     </div>
 {% endblock %}
 
