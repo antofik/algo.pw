@@ -13,6 +13,6 @@
 	<reload-mercy>8</reload-mercy>
     <master />
 	<no-orphans />
-	<virtualenv>/server/www/algo.pw/env/bin/</virtualenv>
+	<virtualenv>/server/www/algo.pw/env/</virtualenv>
 
 </uwsgi>

@@ -3,7 +3,7 @@ import os
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -173,6 +173,7 @@ if DEBUG:
      INSTALLED_APPS += ('debug_toolbar',)
      
 
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 DEBUG_TOOLBAR_CONFIG = {
          'EXCLUDE_URLS': ('/admin',), 
