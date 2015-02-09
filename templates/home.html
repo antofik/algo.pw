@@ -19,7 +19,7 @@
 		<script>
 			$("a.create-link").click(function(){				
 				var form = $("#create-form");
-				$("[name=id]", form).value($(this).data("id"));
+				$("[name=id]", form).val($(this).data("id"));
 				form.submit();
 			});
 		</script>
