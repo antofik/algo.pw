@@ -12,6 +12,7 @@
     <harakiri>300000000</harakiri>
 	<reload-mercy>8</reload-mercy>
     <master />
-    <no-orphans />
+	<no-orphans />
+	<virtualenv>/server/www/algo.pw/env/bin/</virtualenv>
 
 </uwsgi>
