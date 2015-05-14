@@ -1,2 +1,2 @@
-FROM antofik/django:2.7
+FROM antofik/python-uwsgi:2.7
 MAINTAINER antofik                                          
