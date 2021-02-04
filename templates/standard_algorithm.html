@@ -39,6 +39,7 @@
     <script src="{{ MEDIA_URL }}js/bootstrap-wysiwyg.js"></script>
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/font-awesome.css">
     <link rel="stylesheet" href="{{ MEDIA_URL }}plugins/codemirror/lib/codemirror.css">
+    <script src="https://infinite.education/static/js/sdk.js"></script>
 {% endblock %}
 
 {% block base-content %}
@@ -108,6 +109,14 @@
             <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
           </div>
         </div>
+
+        <div class="infinite-education-complete-widget" 
+            style="margin-top: 8px" 
+            data-material-url="{{ request.get_full_path }}" 
+            data-skillset="wrAAMdbaP5QSCqC8gMflStMa" 
+            data-env="@(env.EnvironmentName)">
+        </div>
+
         <div class='txt-description'>
             <a href="javascript:void(0);" class="description-toggler" onclick="$('#description').wysiwyg({}); $('[data-role=editor-toolbar]').slideDown('fast'); $(this).hide(); return false;"><i class="icon-pencil"></i> Edit</a>
             <div id="description-overlay"></div>
